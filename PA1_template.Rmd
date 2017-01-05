@@ -8,11 +8,21 @@ output:
 
 ## Loading and preprocessing the data
 
-
+```{r}
+setwd("C:/Users/summers.forest/R/Coursera/4. Reproducible Research")
+activity <- read.csv(file = "activity.csv",sep=",",stringsAsFactors = FALSE)
+activity.complete <- activity[complete.cases(activity),]
+```
 
 ## What is mean total number of steps taken per day?
 
-
+```{r}
+activity.complete$date <- as.factor(activity.complete$date)
+sum <- sapply(split(activity.complete$steps, activity.complete$date), sum)
+hist(sum, main = "Total Number of Steps Taken Per Day")
+median(sum)
+mean(sum)
+```
 
 ## What is the average daily activity pattern?
 
@@ -23,3 +33,5 @@ output:
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+
