@@ -10,16 +10,11 @@ output:
 ## Loading and preprocessing the data
 
 
+
+
+
 ```r
 library(ggplot2)
-```
-
-```
-## Need help? Try the ggplot2 mailing list:
-## http://groups.google.com/group/ggplot2.
-```
-
-```r
 setwd("C:/Users/summers.forest/R/Coursera/4. Reproducible Research")
 activity <- read.csv(file = "activity.csv",sep=",",stringsAsFactors = FALSE)
 activity.complete <- activity[complete.cases(activity),]
@@ -34,7 +29,7 @@ sum <- sapply(split(activity.complete$steps, activity.complete$date), sum)
 hist(sum, main = "Total Number of Steps Taken Per Day")
 ```
 
-![plot of chunk mean](figure/mean-1.png)
+![plot of chunk mean](figures/mean-1.png)
 
 ```r
 median(sum)
@@ -66,7 +61,7 @@ mean_by_interval_1 <- mean_by_interval
 plot(mean_by_interval$interval , mean_by_interval$Steps , type = "l", main = "Average Daily Activity Pattern", xlab = "Interval", ylab = "Number of Steps")
 ```
 
-![plot of chunk daily](figure/daily-1.png)
+![plot of chunk daily](figures/daily-1.png)
 
 ```r
 mean_by_interval <- mean_by_interval[order(-mean_by_interval$Steps),]
@@ -137,7 +132,7 @@ sum <- sapply(split(activity.complete_without_na$steps, activity.complete_withou
 hist(sum, main = "Total Number of Steps Taken Per Day")
 ```
 
-![plot of chunk missing](figure/missing-1.png)
+![plot of chunk missing](figures/missing-1.png)
 
 ```r
 median(sum)
@@ -185,6 +180,6 @@ ggplot(final, aes(interval, steps)) + geom_line() + facet_grid(week_part ~ .) +
     xlab("Interval") + ylab("Number of Steps")
 ```
 
-![plot of chunk patern](figure/patern-1.png)
+![plot of chunk patern](figures/patern-1.png)
 
 
